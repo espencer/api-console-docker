@@ -4,7 +4,7 @@ MAINTAINER Sébastien LECACHEUR "slecache@gmail.com"
 #
 # install Node & Git
 #
-RUN apk add --update nodejs git \
+RUN apk add --update nodejs nodejs-npm git \
 		&& rm -rf /var/cache/apk/*
 
 #
@@ -20,7 +20,7 @@ WORKDIR /data
 #
 # download the specified (API_CONSOLE_VERSION) version of RAML api:Console
 #
-ENV API_CONSOLE_VERSION v3.0.16
+ENV API_CONSOLE_VERSION v3.0.22
 RUN git clone --depth 1 --branch $API_CONSOLE_VERSION https://github.com/mulesoft/api-console.git /data \
         && mkdir /data/dist/apis \
         && mv /data/dist/examples/simple.raml /data/dist/apis/main.raml \
